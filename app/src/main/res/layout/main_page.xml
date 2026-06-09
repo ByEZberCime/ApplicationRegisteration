@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:circularflow_angles="12"
+    app:circularflow_defaultAngle="12"
+    app:circularflow_defaultRadius="12dp"
+    app:circularflow_radiusInDP="12dp"
+    app:circularflow_viewCenter="12dp"
+    tools:context=".MainPageActivity">
+
+    <ImageView
+        android:id="@+id/regıster_contenrt"
+        android:layout_width="match_parent"
+        android:layout_height="620dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.96"
+        app:srcCompat="@color/material_dynamic_neutral40" />
+
+    <RadioGroup
+        android:id="@+id/register_group_platte"
+        android:layout_width="378dp"
+        android:layout_height="544dp"
+        android:background="#EBEAEA"
+        android:backgroundTint="#AAFFFCFC"
+        android:backgroundTintMode="src_in"
+        app:layout_constraintBottom_toTopOf="@+id/register_button"
+        app:layout_constraintEnd_toEndOf="@+id/regıster_contenrt"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="@+id/regıster_contenrt"
+        app:layout_constraintTop_toTopOf="@+id/regıster_contenrt"
+        app:layout_constraintVertical_bias="1.0">
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:ems="55"
+            android:hint="example@gmail.com"
+            android:inputType="text|textEmailAddress"
+            android:paddingRight="16px"
+            android:textAlignment="viewStart"
+            android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/firstname"
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+            android:ems="10"
+            android:hint="real name"
+            android:inputType="text"
+            android:paddingRight="16px"
+            android:textAlignment="viewStart"
+            android:textColorHint="@color/material_dynamic_neutral20" />
+
+        <EditText
+            android:id="@+id/surname"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:ems="10"
+            android:hint="sourname"
+            android:inputType="text"
+            android:paddingRight="16px"
+            android:textAlignment="viewStart"
+            android:textColorHint="@color/material_dynamic_neutral20" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:ems="10"
+            android:hint="username"
+            android:inputType="text"
+            android:paddingRight="16px"
+            android:textAlignment="viewStart"
+            android:textColorHint="@color/material_dynamic_neutral20" />
+
+        <EditText
+            android:id="@+id/phonenumber"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:ems="10"
+            android:hint="(+_ _ )(  _ _ _  )( _ _ _ )( _ _ _ _ )"
+            android:inputType="text"
+            android:paddingRight="16px"
+            android:textAlignment="viewStart"
+            android:textColorHint="@color/material_dynamic_neutral20" />
+
+        <EditText
+            android:id="@+id/birthday"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:ems="10"
+            android:hint="day/month/year"
+            android:inputType="text"
+            android:paddingRight="16px"
+            android:textAlignment="viewStart"
+            android:textColorHint="@color/material_dynamic_neutral20" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:ems="10"
+            android:hint="password"
+            android:inputType="text"
+            android:paddingRight="16px"
+            android:textAlignment="viewStart" />
+
+        <EditText
+            android:id="@+id/confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:ems="10"
+            android:hint="password confirm"
+            android:inputType="text"
+            android:paddingRight="16px"
+            android:textAlignment="viewStart" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="210dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#A9AEA9"
+        android:text="Register"
+        android:textSize="23dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/regıster_contenrt"
+        app:layout_constraintEnd_toEndOf="@+id/register_group_platte"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/register_group_platte" />
+
+    <TextView
+        android:id="@+id/error_of_email"
+        android:layout_width="325dp"
+        android:layout_height="86dp"
+        android:layout_marginBottom="4dp"
+        android:background="#E7930808"
+        android:text="The email is not right"
+        android:textAlignment="center"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/regıster_contenrt"
+        app:layout_constraintEnd_toEndOf="@+id/register_group_platte"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/register_group_platte" />
+
+    <TextView
+        android:id="@+id/error_of_passwords"
+        android:layout_width="325dp"
+        android:layout_height="86dp"
+        android:layout_marginBottom="4dp"
+        android:background="#E7930808"
+        android:shadowRadius="12"
+        android:text="The passwords are not right"
+        android:textAlignment="center"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/regıster_contenrt"
+        app:layout_constraintEnd_toEndOf="@+id/register_group_platte"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/register_group_platte" />
+
+    <TextView
+        android:id="@+id/error_of_birthday_year"
+        android:layout_width="325dp"
+        android:layout_height="86dp"
+        android:layout_marginBottom="4dp"
+        android:background="#E7930808"
+        android:shadowRadius="12"
+        android:text="The birthday years old are very small"
+        android:textAlignment="center"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/regıster_contenrt"
+        app:layout_constraintEnd_toEndOf="@+id/register_group_platte"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/register_group_platte" />
+
+    <TextView
+        android:id="@+id/error_of_register_info_empty"
+        android:layout_width="368dp"
+        android:layout_height="83dp"
+        android:layout_marginBottom="8dp"
+        android:background="#E7930808"
+        android:shadowRadius="12"
+        android:text="The full write all about than you can next"
+        android:textAlignment="center"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/regıster_contenrt"
+        app:layout_constraintEnd_toEndOf="@+id/register_group_platte"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/register_group_platte" />
+
+    <TextView
+        android:id="@+id/error_of_phonenumber"
+        android:layout_width="368dp"
+        android:layout_height="83dp"
+        android:layout_marginBottom="8dp"
+        android:background="#E7930808"
+        android:shadowRadius="12"
+        android:text="The phone number are is not right"
+        android:textAlignment="center"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/regıster_contenrt"
+        app:layout_constraintEnd_toEndOf="@+id/register_group_platte"
+        app:layout_constraintStart_toStartOf="@+id/register_group_platte" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
