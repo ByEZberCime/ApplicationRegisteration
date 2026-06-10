@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,25 +24,11 @@ public class MainPageActivity extends AppCompatActivity {
     private EditText password;
     private EditText confirmPassword;
 
-    private ImageView errorOfEmail;
-    private ImageView errorOfPasswordWrong;
-    private ImageView errorOfBirthday;
-    private ImageView errorOfRegisterAbout;
-    private ImageView errorOfPhonenumber;
-
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.main_page);
-
-        this.errorOfEmail = (ImageView) findViewById(R.id.error_of_email);
-        this.errorOfPasswordWrong = (ImageView) findViewById(R.id.error_of_passwords);
-        this.errorOfBirthday = (ImageView) findViewById(R.id.error_of_birthday_year);
-        this.errorOfRegisterAbout = (ImageView) findViewById(R.id.error_of_register_info_empty);
-        this.errorOfPhonenumber = (ImageView) findViewById(R.id.error_of_phonenumber);
-
         this.registerButton = (Button) findViewById(R.id.register_button);
         this.emailText = (EditText) findViewById(R.id.email);
         this.realName = (EditText) findViewById(R.id.firstname);
@@ -87,10 +74,6 @@ public class MainPageActivity extends AppCompatActivity {
                 String birthdayString = birthday.getText().toString();
                 String passwordString = password.getText().toString();
                 String confirmPasswordString = confirmPassword.getText().toString();
-
-                if (isRegisterUserAboutsEmpty()) {
-                    errorOfRegisterAbout.setVisibility(View.VISIBLE);
-                }
 
             }
         });
