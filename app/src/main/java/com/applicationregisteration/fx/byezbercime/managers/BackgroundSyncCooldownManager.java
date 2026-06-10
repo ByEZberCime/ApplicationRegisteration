@@ -26,10 +26,6 @@ public class BackgroundSyncCooldownManager {
 
             getBackgroundSyncCooldowns().put("error_is_empty",remainingSeconds);
 
-        } else {
-
-
-
         }
     }
 
@@ -42,10 +38,6 @@ public class BackgroundSyncCooldownManager {
             errorContainer.setVisibility(View.VISIBLE);
 
             getBackgroundSyncCooldowns().put("error_is_password_wrong",remainingSeconds);
-
-        } else {
-
-
 
         }
     }
@@ -60,10 +52,6 @@ public class BackgroundSyncCooldownManager {
 
             getBackgroundSyncCooldowns().put("error_is_email",remainingSeconds);
 
-        } else {
-
-
-
         }
     }
 
@@ -76,10 +64,6 @@ public class BackgroundSyncCooldownManager {
             errorContainer.setVisibility(View.VISIBLE);
 
             getBackgroundSyncCooldowns().put("error_is_birthday",remainingSeconds);
-
-        } else {
-
-
 
         }
     }

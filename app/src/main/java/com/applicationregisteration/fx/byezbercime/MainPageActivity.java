@@ -16,11 +16,15 @@ import androidx.cardview.widget.CardView;
 import com.applicationregisteration.fx.byezbercime.managers.BackgroundSyncCooldownManager;
 import com.applicationregisteration.fx.byezbercime.schedules.ApplicationBackgroundTick;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MainPageActivity extends AppCompatActivity {
 
     private ApplicationBackgroundTick tickManager;
+    private AuthenticationManager authenticationManager;
 
     private Button registerButton;
 
@@ -68,19 +72,13 @@ public class MainPageActivity extends AppCompatActivity {
         this.birthday = (EditText) findViewById(R.id.birthday);
         this.password = (EditText) findViewById(R.id.password);
         this.confirmPassword = (EditText) findViewById(R.id.confirm_password);
+
+        this.authenticationManager = new AuthenticationManager();
         this.tickManager = new ApplicationBackgroundTick(this);
         tickManager.runSyncSchedulers(1000L);
 
         onActionEvents();
 
-    }
-
-    public boolean isOverloadCooldownData(long nowDate, long beforeDate) {
-        boolean result = false;
-        if (nowDate > beforeDate) {
-            result = true;
-        }
-        return result;
     }
 
     protected void onActionEvents() {
@@ -113,7 +111,6 @@ public class MainPageActivity extends AppCompatActivity {
 
                 if (isRegisterUserAboutsEmpty(emailTextString,realNameString,sourNameString,usernameString,phoneNumberString,birthdayString,passwordString,confirmPasswordString)) {
 
-                    
 
                 } else {
 
@@ -128,6 +125,10 @@ public class MainPageActivity extends AppCompatActivity {
 
     public boolean isRegisterUserAboutsEmpty(String emailTextString,String realNameString,String sourNameString,String usernameString,String phoneNumberString,String birthdayString,String passwordString,String confirmPasswordString) {
         return !emailTextString.isEmpty() && !realNameString.isEmpty() && !sourNameString.isEmpty() && !usernameString.isEmpty() && !phoneNumberString.isEmpty() && !birthdayString.isEmpty() && !passwordString.isEmpty() && !confirmPasswordString.isEmpty()?true:false;
+    }
+
+    public AuthenticationManager getAuthenticationManager() {
+        return authenticationManager;
     }
 
     public Button getRegisterButton() {

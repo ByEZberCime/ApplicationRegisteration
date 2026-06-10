@@ -35,7 +35,7 @@ public class ApplicationBackgroundTick extends TimeSchedules {
                 long nowDate = System.currentTimeMillis();
 
                 if (entry.getKey().equals("error_is_empty")) {
-                    if (instance.isOverloadCooldownData(nowDate,beforeDate)) {
+                    if (instance.getAuthenticationManager().isOverloadCooldownData(nowDate,beforeDate)) {
 
                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                             @Override
@@ -50,7 +50,7 @@ public class ApplicationBackgroundTick extends TimeSchedules {
                         syncCooldownManager.getBackgroundSyncCooldowns().remove(entry.getKey());
                     }
                 } else if (entry.getKey().equals("error_is_password_wrong")) {
-                    if (instance.isOverloadCooldownData(nowDate,beforeDate)) {
+                    if (instance.getAuthenticationManager().isOverloadCooldownData(nowDate,beforeDate)) {
 
                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                             @Override
@@ -65,7 +65,7 @@ public class ApplicationBackgroundTick extends TimeSchedules {
                         syncCooldownManager.getBackgroundSyncCooldowns().remove(entry.getKey());
                     }
                 } else if (entry.getKey().equals("error_is_email")) {
-                    if (instance.isOverloadCooldownData(nowDate,beforeDate)) {
+                    if (instance.getAuthenticationManager().isOverloadCooldownData(nowDate,beforeDate)) {
 
                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                             @Override
@@ -80,7 +80,7 @@ public class ApplicationBackgroundTick extends TimeSchedules {
                         syncCooldownManager.getBackgroundSyncCooldowns().remove(entry.getKey());
                     }
                 } else if (entry.getKey().equals("error_is_birthday")) {
-                    if (instance.isOverloadCooldownData(nowDate,beforeDate)) {
+                    if (instance.getAuthenticationManager().isOverloadCooldownData(nowDate,beforeDate)) {
 
                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                             @Override
