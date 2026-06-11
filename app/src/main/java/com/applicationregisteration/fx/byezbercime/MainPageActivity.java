@@ -38,6 +38,12 @@ public class MainPageActivity extends AppCompatActivity {
     private TextView errorPasswordMessage;
     private TextView errorRegisterEmptyMessage;
     private TextView errorBirthdayMessage;
+    private TextView errorNameWrongMessage;
+    private TextView errorUsernameWrongMessage;
+    private TextView errorUsernameUppercaseInvalidMessage;
+    private TextView errorPhonenumberInvalidMessage;
+    private TextView errorCountryIsNotSupportedMessage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +60,11 @@ public class MainPageActivity extends AppCompatActivity {
         this.errorPasswordMessage = (TextView) findViewById(R.id.error_of_passwords);
         this.errorBirthdayMessage = (TextView) findViewById(R.id.error_of_birthday_year);
         this.errorRegisterEmptyMessage = (TextView) findViewById(R.id.error_of_register_info_empty);
+        this.errorNameWrongMessage = (TextView) findViewById(R.id.error_of_name);
+        this.errorUsernameWrongMessage = (TextView) findViewById(R.id.error_of_username);
+        this.errorUsernameUppercaseInvalidMessage = (TextView) findViewById(R.id.error_of_username_uppercase);
+        this.errorPhonenumberInvalidMessage = (TextView) findViewById(R.id.error_of_phone_invalid);
+        this.errorCountryIsNotSupportedMessage = (TextView) findViewById(R.id.error_of_country_not_support);
 
         this.registerButton = (Button) findViewById(R.id.register_button);
         this.emailText = (EditText) findViewById(R.id.email);
@@ -82,13 +93,19 @@ public class MainPageActivity extends AppCompatActivity {
                 if (!tickManager.getSyncCooldownManager().getBackgroundSyncCooldowns().isEmpty()) {
                     tickManager.getSyncCooldownManager().getBackgroundSyncCooldowns().clear();
 
-                    getErrorBirthdayMessage().setVisibility(View.INVISIBLE);
-                    getErrorMailMessage().setVisibility(View.INVISIBLE);
-                    getErrorPasswordMessage().setVisibility(View.INVISIBLE);
-                    getErrorRegisterEmptyMessage().setVisibility(View.INVISIBLE);
-                    getSuccessRegisteredMessage().setVisibility(View.INVISIBLE);
-                    getSuccessContainer().setVisibility(View.INVISIBLE);
-                    getErrorContainer().setVisibility(View.INVISIBLE);
+                    getErrorBirthdayMessage().setVisibility(View.GONE);
+                    getErrorNameWrongMessage().setVisibility(View.GONE);
+                    getErrorUsernameWrongMessage().setVisibility(View.GONE);
+                    getErrorMailMessage().setVisibility(View.GONE);
+                    getErrorCountryIsNotSupportedMessage().setVisibility(View.GONE);
+                    getErrorUsernameUppercaseInvalidMessage().setVisibility(View.GONE);
+                    getErrorPhonenumberInvalidMessage().setVisibility(View.GONE);
+                    getErrorPasswordMessage().setVisibility(View.GONE);
+                    getErrorRegisterEmptyMessage().setVisibility(View.GONE);
+                    getSuccessRegisteredMessage().setVisibility(View.GONE);
+
+                    getSuccessContainer().setVisibility(View.GONE);
+                    getErrorContainer().setVisibility(View.GONE);
 
                 }
 
@@ -101,15 +118,77 @@ public class MainPageActivity extends AppCompatActivity {
                 String passwordString = password.getText().toString();
                 String confirmPasswordString = confirmPassword.getText().toString();
 
-
-
                 if (isRegisterUserAboutsEmpty(emailTextString,realNameString,sourNameString,usernameString,phoneNumberString,birthdayString,passwordString,confirmPasswordString)) {
+                    if (authenticationManager.isEmailAuthentication(emailTextString)) {
+                        if (authenticationManager.isTextLength(realNameString,30) && authenticationManager.isIllegalCharacter(realNameString) &&
+                                authenticationManager.isIllegalCharacter(sourNameString) && authenticationManager.isTextLength(sourNameString,30)) {
 
+                            if (authenticationManager.isIllegalCharacter(usernameString) && authenticationManager.isTextLength(usernameString,30)) {
+                                if(!authenticationManager.isCharacterAuthenticate(AuthenticationManager.AuthenticationPasswordInformation.UPPERCASE,1,usernameString)) {
+                                    if (!phoneNumberString.isEmpty()) {
 
+                                        int p = phoneNumberString.length() - 3;
+                                        String numString = phoneNumberString.substring(0,phoneNumberString.length() - p);
 
+                                        System.out.println(numString);
+
+                                        String countryPhoneCode = CountryPhoneCode.getByPhoneCode(numString).name();
+                                        System.out.println(countryPhoneCode);
+
+                                        if (countryPhoneCode.equals(CountryPhoneCode.TURKEY.name())) {
+
+                                            String phone = authenticationManager.getCountryPhoneNumberFormat(countryPhoneCode,phoneNumberString);
+                                            if (!phone.isEmpty()) {
+                                                if (authenticationManager.isBirthdayDateAuthentication(birthdayString) && authenticationManager.isOldLimit(birthdayString,18)) {
+
+                                                    boolean passwordResult =
+                                                            authenticationManager.isTextMinLength(passwordString,6) &&
+                                                                    authenticationManager.isTextLength(passwordString,149) &&
+                                                                    authenticationManager.isCharacterAuthenticate(AuthenticationManager.AuthenticationPasswordInformation.UPPERCASE,6,passwordString) &&
+                                                                    authenticationManager.isCharacterAuthenticate(AuthenticationManager.AuthenticationPasswordInformation.NUMBERS,6,passwordString) &&
+                                                                    authenticationManager.isCharacterAuthenticate(AuthenticationManager.AuthenticationPasswordInformation.LOWERCASE,6,passwordString) &&
+                                                                    authenticationManager.isCharacterAuthenticate(AuthenticationManager.AuthenticationPasswordInformation.KEYCASE,1,passwordString);
+
+                                                    boolean confirmPasswordResult =
+                                                            authenticationManager.isTextMinLength(confirmPasswordString,6) &&
+                                                                    authenticationManager.isTextLength(confirmPasswordString,149) &&
+                                                                    authenticationManager.isCharacterAuthenticate(AuthenticationManager.AuthenticationPasswordInformation.UPPERCASE,6,confirmPasswordString) &&
+                                                                    authenticationManager.isCharacterAuthenticate(AuthenticationManager.AuthenticationPasswordInformation.NUMBERS,6,confirmPasswordString) &&
+                                                                    authenticationManager.isCharacterAuthenticate(AuthenticationManager.AuthenticationPasswordInformation.LOWERCASE,6,confirmPasswordString) &&
+                                                                    authenticationManager.isCharacterAuthenticate(AuthenticationManager.AuthenticationPasswordInformation.KEYCASE,1,confirmPasswordString);
+
+                                                    if (passwordResult && confirmPasswordResult && authenticationManager.isAuthenticationPasswordConfirm(passwordString,confirmPasswordString)) {
+
+                                                        tickManager.getSyncCooldownManager().setSuccessRegisteredMessage(successContainer,successRegisteredMessage,true,20L);
+
+                                                    } else {
+
+                                                    }
+                                                } else {
+
+                                                }
+                                            } else {
+
+                                            }
+                                        } else {
+
+                                        }
+                                    } else {
+
+                                    }
+                                } else {
+
+                                }
+                            } else {
+
+                            }
+                        } else {
+
+                        }
+                    } else {
+
+                    }
                 } else {
-
-                    tickManager.getSyncCooldownManager().setErrorTypeInfoEmpty(errorContainer,errorRegisterEmptyMessage,true,5L);
 
                 }
 
@@ -126,12 +205,32 @@ public class MainPageActivity extends AppCompatActivity {
         return authenticationManager;
     }
 
+    public TextView getErrorPhonenumberInvalidMessage() {
+        return errorPhonenumberInvalidMessage;
+    }
+
     public Button getRegisterButton() {
         return registerButton;
     }
 
+    public TextView getErrorUsernameUppercaseInvalidMessage() {
+        return errorUsernameUppercaseInvalidMessage;
+    }
+
     public EditText getEmailText() {
         return emailText;
+    }
+
+    public TextView getErrorNameWrongMessage() {
+        return errorNameWrongMessage;
+    }
+
+    public TextView getErrorCountryIsNotSupportedMessage() {
+        return errorCountryIsNotSupportedMessage;
+    }
+
+    public TextView getErrorUsernameWrongMessage() {
+        return errorUsernameWrongMessage;
     }
 
     public EditText getRealName() {

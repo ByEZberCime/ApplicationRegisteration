@@ -9,6 +9,8 @@ public class GuessAuthentication {
     private String email;
     private String realName;
     private String sourtName;
+
+    private String profileName;
     private String username;
     private String birthday;
     private String phoneNumber;
@@ -43,6 +45,14 @@ public class GuessAuthentication {
 
     public String getCountry() {
         return country;
+    }
+
+    public String getProfileName() {
+        return profileName;
+    }
+
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
     }
 
     public String getEmail() {

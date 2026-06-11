@@ -37,6 +37,14 @@ public class AuthenticationManager {
         return result;
     }
 
+    public boolean isTextMinLength(String text,int length) {
+        boolean result = false;
+        if (!text.isEmpty() && text.length() > length) {
+            result = true;
+        }
+        return result;
+    }
+
     public boolean isBirthdayDateAuthentication(String birthdayDateText) {
         boolean result = false;
         if (!birthdayDateText.isEmpty()) {
@@ -168,7 +176,7 @@ public class AuthenticationManager {
             String emailName = emailAdressSplits[0];
             String mailsLinks = emailAdressSplits[1];
 
-            if (isIllegalCharacter(emailName) && mailsLinks.equals("gmail.com")) {
+            if (isIllegalCharacter(emailName) && isTextLength(emailName,244) && mailsLinks.equals("gmail.com")) {
                 result = true;
             }
         }

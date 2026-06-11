@@ -20,7 +20,6 @@ public class ApplicationBackgroundTick extends TimeSchedules {
     public ApplicationBackgroundTick(MainPageActivity instance) {
 
         syncCooldownManager = new BackgroundSyncCooldownManager();
-
         this.instance = instance;
         setInstance(instance);
 
@@ -41,8 +40,8 @@ public class ApplicationBackgroundTick extends TimeSchedules {
                             @Override
                             public void run() {
 
-                                instance.getErrorRegisterEmptyMessage().setVisibility(View.INVISIBLE);
-                                instance.getErrorContainer().setVisibility(View.INVISIBLE);
+                                instance.getErrorRegisterEmptyMessage().setVisibility(View.GONE);
+                                instance.getErrorContainer().setVisibility(View.GONE);
 
                             }
                         });
@@ -56,8 +55,8 @@ public class ApplicationBackgroundTick extends TimeSchedules {
                             @Override
                             public void run() {
 
-                                instance.getErrorPasswordMessage().setVisibility(View.INVISIBLE);
-                                instance.getErrorContainer().setVisibility(View.INVISIBLE);
+                                instance.getErrorPasswordMessage().setVisibility(View.GONE);
+                                instance.getErrorContainer().setVisibility(View.GONE);
 
                             }
                         });
@@ -71,8 +70,8 @@ public class ApplicationBackgroundTick extends TimeSchedules {
                             @Override
                             public void run() {
 
-                                instance.getErrorMailMessage().setVisibility(View.INVISIBLE);
-                                instance.getErrorContainer().setVisibility(View.INVISIBLE);
+                                instance.getErrorMailMessage().setVisibility(View.GONE);
+                                instance.getErrorContainer().setVisibility(View.GONE);
 
                             }
                         });
@@ -86,8 +85,98 @@ public class ApplicationBackgroundTick extends TimeSchedules {
                             @Override
                             public void run() {
 
-                                instance.getErrorBirthdayMessage().setVisibility(View.INVISIBLE);
-                                instance.getErrorContainer().setVisibility(View.INVISIBLE);
+                                instance.getErrorBirthdayMessage().setVisibility(View.GONE);
+                                instance.getErrorContainer().setVisibility(View.GONE);
+
+                            }
+                        });
+
+                        syncCooldownManager.getBackgroundSyncCooldowns().remove(entry.getKey());
+                    }
+                } else if (entry.getKey().equals("error_of_name")) {
+                    if (instance.getAuthenticationManager().isOverloadCooldownData(nowDate,beforeDate)) {
+
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                instance.getErrorNameWrongMessage().setVisibility(View.GONE);
+                                instance.getErrorContainer().setVisibility(View.GONE);
+
+                            }
+                        });
+
+                        syncCooldownManager.getBackgroundSyncCooldowns().remove(entry.getKey());
+                    }
+                } else if (entry.getKey().equals("error_of_username")) {
+                    if (instance.getAuthenticationManager().isOverloadCooldownData(nowDate,beforeDate)) {
+
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                instance.getErrorUsernameWrongMessage().setVisibility(View.GONE);
+                                instance.getErrorContainer().setVisibility(View.GONE);
+
+                            }
+                        });
+
+                        syncCooldownManager.getBackgroundSyncCooldowns().remove(entry.getKey());
+                    }
+                } else if (entry.getKey().equals("error_of_username_uppercase")) {
+                    if (instance.getAuthenticationManager().isOverloadCooldownData(nowDate,beforeDate)) {
+
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                instance.getErrorUsernameUppercaseInvalidMessage().setVisibility(View.GONE);
+                                instance.getErrorContainer().setVisibility(View.GONE);
+
+                            }
+                        });
+
+                        syncCooldownManager.getBackgroundSyncCooldowns().remove(entry.getKey());
+                    }
+                } else if (entry.getKey().equals("error_is_phonenumber_invalid")) {
+                    if (instance.getAuthenticationManager().isOverloadCooldownData(nowDate,beforeDate)) {
+
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                instance.getErrorPhonenumberInvalidMessage().setVisibility(View.GONE);
+                                instance.getErrorContainer().setVisibility(View.GONE);
+
+                            }
+                        });
+
+                        syncCooldownManager.getBackgroundSyncCooldowns().remove(entry.getKey());
+                    }
+                } else if (entry.getKey().equals("error_is_country_not_support")) {
+                    if (instance.getAuthenticationManager().isOverloadCooldownData(nowDate,beforeDate)) {
+
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                instance.getErrorCountryIsNotSupportedMessage().setVisibility(View.GONE);
+                                instance.getErrorContainer().setVisibility(View.GONE);
+
+                            }
+                        });
+
+                        syncCooldownManager.getBackgroundSyncCooldowns().remove(entry.getKey());
+                    }
+                } else if (entry.getKey().equals("success_registered_content")) {
+                    if (instance.getAuthenticationManager().isOverloadCooldownData(nowDate,beforeDate)) {
+
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                instance.getSuccessRegisteredMessage().setVisibility(View.GONE);
+                                instance.getSuccessContainer().setVisibility(View.GONE);
 
                             }
                         });
