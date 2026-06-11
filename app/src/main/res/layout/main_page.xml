@@ -258,7 +258,7 @@
                         android:layout_height="63dp"
                         android:ems="10"
                         android:hint="(+_ _ )(  _ _ _  )( _ _ _ )( _ _ _ _ )"
-                        android:inputType="text"
+                        android:inputType="phone"
                         android:paddingRight="16px"
                         android:textAlignment="viewStart"
                         android:textColorHint="@color/material_dynamic_neutral20" />
@@ -268,7 +268,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="65dp"
                         android:ems="10"
-                        android:hint="day/month/year"
+                        android:hint="01/01/2007"
                         android:inputType="text"
                         android:paddingRight="16px"
                         android:textAlignment="viewStart"
@@ -280,7 +280,7 @@
                         android:layout_height="71dp"
                         android:ems="10"
                         android:hint="password"
-                        android:inputType="text"
+                        android:inputType="text|textPassword"
                         android:paddingRight="16px"
                         android:textAlignment="viewStart" />
 
@@ -290,7 +290,7 @@
                         android:layout_height="68dp"
                         android:ems="10"
                         android:hint="password confirm"
-                        android:inputType="text"
+                        android:inputType="text|textPassword"
                         android:paddingRight="16px"
                         android:textAlignment="viewStart" />
 

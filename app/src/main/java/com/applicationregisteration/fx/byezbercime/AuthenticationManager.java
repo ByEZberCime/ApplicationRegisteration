@@ -1,14 +1,85 @@
 package com.applicationregisteration.fx.byezbercime;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class AuthenticationManager {
 
-    public boolean isEmailAuthentication() {
+    public boolean isTextLength(String text,int length) {
+        boolean result = false;
+        if (!text.isEmpty() && text.length() < length) {
+            result = true;
+        }
+        return result;
+    }
+
+    public boolean isBirthdayDateAuthentication(String birthdayDateText) {
+        boolean result = false;
+        if (!birthdayDateText.isEmpty()) {
+
+            String[] birthdayDateTextSplits = birthdayDateText.split("/");
+
+            String day = birthdayDateTextSplits[0];
+            String month = birthdayDateTextSplits[1];
+            String year = birthdayDateTextSplits[2];
+
+            if (!day.isEmpty() && !month.isEmpty() && !year.isEmpty()) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    public boolean isOldLimit(String birthdayDateText,int oldLimit) {
         boolean result = false;
 
+        if (!String.valueOf(oldLimit).isEmpty() && isBirthdayDateAuthentication(birthdayDateText)) {
+
+            Date dt = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy");
+            String nowYear = simpleDateFormat.format(dt);
+            String[] birthdayDateTextSplits = birthdayDateText.split("/");
+            int year = Integer.parseInt(birthdayDateTextSplits[2]);
+
+            int oldYear = Integer.parseInt(nowYear) - year;
+
+            if (oldLimit <= oldYear) {
+                result = true;
+            }
+
+        }
+        return result;
+    }
+
+    public boolean isCharacterAuthenticate(String type,int typeLength,String value) {
+        boolean result = false;
+
+        int characters = 0;
+
+
+
+        if (characters == typeLength) {
+            result = true;
+        }
+
+        return result;
+    }
+
+    public boolean isEmailAuthentication(String email) {
+        boolean result = false;
+
+        if (!email.isEmpty()) {
+            String[] emailAdressSplits = email.split("@");
+            String emailName = emailAdressSplits[0];
+            String mailsLinks = emailAdressSplits[1];
+
+            if (isIllegalCharacter(emailName) && mailsLinks.equals("gmail.com")) {
+                result = true;
+            }
+        }
         return result;
     }
 

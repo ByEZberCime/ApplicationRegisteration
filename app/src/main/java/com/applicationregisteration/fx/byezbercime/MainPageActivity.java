@@ -109,7 +109,10 @@ public class MainPageActivity extends AppCompatActivity {
                 String passwordString = password.getText().toString();
                 String confirmPasswordString = confirmPassword.getText().toString();
 
+
+
                 if (isRegisterUserAboutsEmpty(emailTextString,realNameString,sourNameString,usernameString,phoneNumberString,birthdayString,passwordString,confirmPasswordString)) {
+
 
 
                 } else {
