@@ -52,9 +52,9 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/register_error_container"
-        android:layout_width="241dp"
-        android:layout_height="69dp"
-        android:layout_marginStart="85dp"
+        android:layout_width="300dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="50dp"
         android:layout_marginEnd="85dp"
         android:layout_marginBottom="8dp"
         android:visibility="invisible"
@@ -69,7 +69,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/register_error_layout"
             android:layout_width="match_parent"
-            android:layout_height="99dp">
+            android:layout_height="112dp">
 
             <TextView
                 android:id="@+id/error_of_email"
@@ -80,6 +80,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
                 android:background="#FF6767"
+                android:paddingTop="20dp"
                 android:text="The email is not right"
                 android:textAlignment="center"
                 android:textColor="#323232"
@@ -100,7 +101,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="4dp"
                 android:background="#FF6767"
-                android:paddingTop="5dp"
+                android:paddingTop="20dp"
                 android:text="The passwords are not right"
                 android:textAlignment="center"
                 android:textColor="#323232"
@@ -186,7 +187,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="4dp"
                 android:background="#FF6767"
-                android:paddingTop="10dp"
+                android:paddingTop="20dp"
                 android:text="The username are wrong"
                 android:textAlignment="center"
                 android:textColor="#323232"
@@ -230,7 +231,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="4dp"
                 android:background="#FF6767"
-                android:paddingTop="10dp"
+                android:paddingTop="20dp"
                 android:text="The phone number is invalid"
                 android:textAlignment="center"
                 android:textColor="#323232"
@@ -252,14 +253,36 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="4dp"
                 android:background="#FF6767"
-                android:paddingTop="10dp"
-                android:text="The country is not supported"
+                android:paddingTop="20dp"
+                android:text="The phone number is invalid"
                 android:textAlignment="center"
                 android:textColor="#323232"
                 android:textSize="20dp"
                 android:textStyle="bold|italic"
-                android:visibility="visible"
+                android:visibility="gone"
 
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/error_of_passwrod_character_not_enough"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="4dp"
+                android:background="#FF6767"
+                android:paddingTop="5dp"
+                android:text="@string/password_character_wrong"
+                android:textAlignment="center"
+                android:textColor="#323232"
+                android:textSize="16dp"
+                android:textStyle="bold|italic"
+
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -99,6 +99,18 @@ public class BackgroundSyncCooldownManager {
         }
     }
 
+    public void setErrorTypePasswordCharacterWrong(CardView errorContainer, TextView errorMessage, boolean result, Long value) {
+        if (result && errorContainer != null && errorMessage != null) {
+
+            long remainingSeconds = ((value * 1000) + System.currentTimeMillis());
+            errorMessage.setVisibility(CardView.VISIBLE);
+            errorContainer.setVisibility(View.VISIBLE);
+
+            getBackgroundSyncCooldowns().put("error_is_password_character_not_enough_wrong",remainingSeconds);
+
+        }
+    }
+
     public void setErrorTypeEmailWrong(CardView errorContainer, TextView errorMessage, boolean result, Long value) {
         if (result && errorContainer != null && errorMessage != null) {
 

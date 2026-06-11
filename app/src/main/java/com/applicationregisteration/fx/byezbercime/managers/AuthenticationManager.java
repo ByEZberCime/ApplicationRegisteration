@@ -14,7 +14,7 @@ public class AuthenticationManager {
 
         UPPERCASE(List.of("Z","X","C","V","B","N","M","L","K","J","H","G","F","D","S","A","Q","W","E","R","T","Y","U","I","O","P")),
         LOWERCASE(List.of("z","x","c","v","b","n","m","l","k","h","g","f","d","s","a","q","w","e","r","t","y","u","i","o","p")),
-        KEYCASE(List.of("*","_",".","=","+","-","")),
+        KEYCASE(List.of("*","_",".","=","+","-",",")),
         NUMBERS(List.of("0","1","2","3","4","5","6","7","8","9"));
 
         List<String> data;
