@@ -1,25 +1,17 @@
 package com.applicationregisteration.fx.byezbercime;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.applicationregisteration.fx.byezbercime.managers.BackgroundSyncCooldownManager;
+import com.applicationregisteration.fx.byezbercime.managers.AuthenticationManager;
 import com.applicationregisteration.fx.byezbercime.schedules.ApplicationBackgroundTick;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.applicationregisteration.fx.byezbercime.util.CountryPhoneCode;
 
 public class MainPageActivity extends AppCompatActivity {
 

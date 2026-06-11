@@ -1,4 +1,6 @@
-package com.applicationregisteration.fx.byezbercime;
+package com.applicationregisteration.fx.byezbercime.managers;
+
+import com.applicationregisteration.fx.byezbercime.util.CountryPhoneCode;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -7,6 +9,25 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AuthenticationManager {
+
+    public enum AuthenticationPasswordInformation {
+
+        UPPERCASE(List.of("Z","X","C","V","B","N","M","L","K","J","H","G","F","D","S","A","Q","W","E","R","T","Y","U","I","O","P")),
+        LOWERCASE(List.of("z","x","c","v","b","n","m","l","k","h","g","f","d","s","a","q","w","e","r","t","y","u","i","o","p")),
+        KEYCASE(List.of("*","_",".","=","+","-","")),
+        NUMBERS(List.of("0","1","2","3","4","5","6","7","8","9"));
+
+        List<String> data;
+
+        AuthenticationPasswordInformation(List<String> data) {
+            this.data = data;
+        }
+
+        public List<String> getInfo() {
+            return data;
+        }
+
+    }
 
     public boolean isTextLength(String text,int length) {
         boolean result = false;
@@ -54,14 +75,85 @@ public class AuthenticationManager {
         return result;
     }
 
-    public boolean isCharacterAuthenticate(String type,int typeLength,String value) {
+    boolean isTypeTextAuthentication(List<String> d,String value) {
+        boolean result = false;
+
+        if (!d.isEmpty() && !value.isEmpty()) {
+
+            for (String s : d) {
+                if (value.equals(s)) {
+                    result = true;
+                }
+            }
+
+        }
+
+        return result;
+    }
+
+    public String getCountryPhoneNumberFormat(String lang,String number) {
+        int p = number.length() - 3;
+        String phoneNumber = "Invalid phone number";
+        String numString = number.substring(0,number.length() - p);
+
+        if (CountryPhoneCode.getByPhoneCode(numString) != null) {
+            String language = CountryPhoneCode.getByPhoneCode(numString).name();
+
+            if (language.equals(lang)) {
+
+                String a = number.substring(3,number.length() - 7);
+                String b = number.substring(6,number.length() - 4);
+                String c = number.substring(9,number.length() - 2);
+                String d = number.substring(11);
+                phoneNumber = "0"+a+ " "+b+" "+c+ " "+d;
+
+            }
+        }
+
+        return phoneNumber;
+    }
+
+    public boolean isAuthenticationPasswordConfirm(String password,String confirmPassword) {
+
+        boolean result = false;
+        String[] passwordSplits = password.split("");
+        String[] confirmPasswordsSplits = confirmPassword.split("");
+        List<String> passwords = Arrays.stream(passwordSplits).collect(Collectors.toList());
+
+        int passwordLength = password.length();
+        int confirmPasswordLength = confirmPassword.length();
+        int length = 0;
+
+        if (!password.isEmpty() && !passwords.isEmpty() && !confirmPassword.isEmpty()) {
+            for (int i = 0; i < confirmPasswordsSplits.length; i++) {
+                String confirmPasswordValue = confirmPasswordsSplits[0];
+                if (isTypeTextAuthentication(passwords,confirmPasswordValue)) {
+                    length++;
+                }
+            }
+        }
+
+        if (passwordLength == length && confirmPasswordLength == length) {
+            result = true;
+        }
+
+        return result;
+    }
+
+    public boolean isCharacterAuthenticate(AuthenticationPasswordInformation information,int typeLength,String value) {
         boolean result = false;
 
         int characters = 0;
+        String[] values = value.split("");
 
+        for (int i = 0; i < values.length; i++) {
+            String v = values[i];
+            if (isTypeTextAuthentication(information.getInfo(),v)) {
+                characters++;
+            }
+        }
 
-
-        if (characters == typeLength) {
+        if (characters >= typeLength) {
             result = true;
         }
 

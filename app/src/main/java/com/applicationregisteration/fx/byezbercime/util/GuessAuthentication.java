@@ -5,6 +5,7 @@ import java.util.Date;
 @Deprecated
 public class GuessAuthentication {
 
+    private String country;
     private String email;
     private String realName;
     private String sourtName;
@@ -17,7 +18,8 @@ public class GuessAuthentication {
     private Date registeredDate;
     private Date loginDate;
 
-    public GuessAuthentication(String email, String realName, String sourtName, String username, String birthday, String phoneNumber, String password, String confirmPassword, boolean isRegister, Date registeredDate) {
+    public GuessAuthentication(String country,String email, String realName, String sourtName, String username, String birthday, String phoneNumber, String password, String confirmPassword, boolean isRegister, Date registeredDate) {
+        this.country = country;
         this.email = email;
         this.realName = realName;
         this.sourtName = sourtName;
@@ -30,12 +32,17 @@ public class GuessAuthentication {
         this.registeredDate = registeredDate;
     }
 
-    public GuessAuthentication(String email, String password, String phoneNumber, Date loginDate, boolean isRegister) {
+    public GuessAuthentication(String country,String email, String password, String phoneNumber, Date loginDate, boolean isRegister) {
+        this.country = country;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.loginDate = loginDate;
         this.isRegister = isRegister;
+    }
+
+    public String getCountry() {
+        return country;
     }
 
     public String getEmail() {
