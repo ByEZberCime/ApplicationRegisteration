@@ -17,6 +17,16 @@ import com.applicationregisteration.fx.byezbercime.util.CountryPhoneCode;
 
 public class MainPageActivity extends AppCompatActivity {
 
+    private static final String DEBUG_EMAIL = "testmail@gmail.com";
+    private static final String DEBUG_REALNAME = "Emir";
+    private static final String DEBUG_SOURNAME = "Tasmaz";
+    private static final String DEBUG_USERNAME = "byezbercime";
+    private static final String DEBUG_PHONENUMBER = "+905313122909";
+    private static final String DEBUG_BIRTHDAY = "04/01/2007";
+    private static final String DEBUG_PASSWORD = " aD7sbc58CbBN5am4M1BK9.";
+    private static final String DEBUG_CONFIRMPASSWORD = " aD7sbc58CbBN5am4M1BK9.";
+
+
     private ApplicationBackgroundTick tickManager;
     private AuthenticationManager authenticationManager;
 
@@ -47,7 +57,6 @@ public class MainPageActivity extends AppCompatActivity {
     private TextView errorPhonenumberInvalidMessage;
     private TextView errorCountryIsNotSupportedMessage;
     private Animation errorCardAnimation;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +95,15 @@ public class MainPageActivity extends AppCompatActivity {
         this.authenticationManager = new AuthenticationManager();
         this.tickManager = new ApplicationBackgroundTick(this);
         tickManager.runSyncSchedulers(1000L);
+
+        emailText.setText(DEBUG_EMAIL);
+        realName.setText(DEBUG_REALNAME);
+        sourName.setText(DEBUG_SOURNAME);
+        username.setText(DEBUG_USERNAME);
+        phoneNumber.setText(DEBUG_PHONENUMBER);
+        birthday.setText(DEBUG_BIRTHDAY);
+        password.setText(DEBUG_PASSWORD);
+        confirmPassword.setText(DEBUG_CONFIRMPASSWORD);
 
         onActionEvents();
 
@@ -129,6 +147,7 @@ public class MainPageActivity extends AppCompatActivity {
                     if (authenticationManager.isEmailAuthentication(emailTextString)) {
                         if (authenticationManager.isTextLength(realNameString,30) && authenticationManager.isIllegalCharacter(realNameString) &&
                                 authenticationManager.isIllegalCharacter(sourNameString) && authenticationManager.isTextLength(sourNameString,30)) {
+
                             if (authenticationManager.isIllegalCharacter(usernameString) && authenticationManager.isTextLength(usernameString,30)) {
                                 if(!authenticationManager.isCharacterAuthenticate(AuthenticationManager.AuthenticationPasswordInformation.UPPERCASE,1,usernameString)) {
                                     if (!phoneNumberString.isEmpty() && authenticationManager.isTextMinLength(phoneNumberString,12)) {
@@ -151,7 +170,6 @@ public class MainPageActivity extends AppCompatActivity {
                                                                     authenticationManager.isCharacterAuthenticate(AuthenticationManager.AuthenticationPasswordInformation.LOWERCASE,6,passwordString) &&
                                                                     authenticationManager.isCharacterAuthenticate(AuthenticationManager.AuthenticationPasswordInformation.KEYCASE,1,passwordString);
 
-                                                    // aD7sbc58CbBN5am4M1BK9.
                                                     boolean confirmPasswordResult =
                                                             authenticationManager.isTextMinLength(confirmPasswordString,6) &&
                                                                     authenticationManager.isTextLength(confirmPasswordString,149) &&
@@ -203,6 +221,7 @@ public class MainPageActivity extends AppCompatActivity {
                                 tickManager.getSyncCooldownManager().setErrorTypeUsernameWrong(errorContainer,errorUsernameWrongMessage,true,5L);
                                 errorContainer.setAnimation(errorCardAnimation);
                             }
+
                         } else {
                             tickManager.getSyncCooldownManager().setErrorTypeNameWrong(errorContainer,errorNameWrongMessage,true,5L);
                             errorContainer.setAnimation(errorCardAnimation);
@@ -233,20 +252,12 @@ public class MainPageActivity extends AppCompatActivity {
         return errorPhonenumberInvalidMessage;
     }
 
-    public Button getRegisterButton() {
-        return registerButton;
-    }
-
     public TextView getErrorPasswordCharacterNotEnoughMessage() {
         return errorPasswordCharacterNotEnoughMessage;
     }
 
     public TextView getErrorUsernameUppercaseInvalidMessage() {
         return errorUsernameUppercaseInvalidMessage;
-    }
-
-    public EditText getEmailText() {
-        return emailText;
     }
 
     public TextView getErrorNameWrongMessage() {
@@ -259,34 +270,6 @@ public class MainPageActivity extends AppCompatActivity {
 
     public TextView getErrorUsernameWrongMessage() {
         return errorUsernameWrongMessage;
-    }
-
-    public EditText getRealName() {
-        return realName;
-    }
-
-    public EditText getSourName() {
-        return sourName;
-    }
-
-    public EditText getUsername() {
-        return username;
-    }
-
-    public EditText getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public EditText getBirthday() {
-        return birthday;
-    }
-
-    public EditText getPassword() {
-        return password;
-    }
-
-    public EditText getConfirmPassword() {
-        return confirmPassword;
     }
 
     public CardView getErrorContainer() {
