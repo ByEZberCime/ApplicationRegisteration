@@ -56,7 +56,34 @@ public class AuthenticationManager {
             String year = birthdayDateTextSplits[2];
 
             if (!day.isEmpty() && !month.isEmpty() && !year.isEmpty()) {
-                result = true;
+
+                if ( (month.equals("02") && Integer.parseInt(day) <= 28) || (month.equals("02") &&  Integer.parseInt(day) <= 29) ) {
+                    result = true;
+                }
+                if (month.equals("01") && Integer.parseInt(day) <= 31) {
+                    result = true;
+                } else if (month.equals("03") && Integer.parseInt(day) <=31) {
+                    result = true;
+                } else if (month.equals("04") && Integer.parseInt(day) <=30) {
+                    result = true;
+                } else if (month.equals("05") && Integer.parseInt(day) <=31) {
+                    result = true;
+                } else if (month.equals("06") && Integer.parseInt(day) <=30) {
+                    result = true;
+                } else if (month.equals("07") && Integer.parseInt(day) <=31) {
+                    result = true;
+                } else if (month.equals("08") && Integer.parseInt(day) <=31) {
+                    result = true;
+                } else if (month.equals("09") && Integer.parseInt(day) <=30) {
+                    result = true;
+                } else if (month.equals("10") && Integer.parseInt(day) <=31) {
+                    result = true;
+                } else if (month.equals("11") && Integer.parseInt(day) <=30) {
+                    result = true;
+                } else if (month.equals("12") && Integer.parseInt(day) <=31) {
+                    result = true;
+                }
+
             }
         }
         return result;

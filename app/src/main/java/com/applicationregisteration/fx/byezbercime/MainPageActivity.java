@@ -96,6 +96,13 @@ public class MainPageActivity extends AppCompatActivity {
         this.tickManager = new ApplicationBackgroundTick(this);
         tickManager.runSyncSchedulers(1000L);
 
+//        debugTest();
+
+        onActionEvents();
+
+    }
+
+    private void debugTest() {
         emailText.setText(DEBUG_EMAIL);
         realName.setText(DEBUG_REALNAME);
         sourName.setText(DEBUG_SOURNAME);
@@ -104,9 +111,6 @@ public class MainPageActivity extends AppCompatActivity {
         birthday.setText(DEBUG_BIRTHDAY);
         password.setText(DEBUG_PASSWORD);
         confirmPassword.setText(DEBUG_CONFIRMPASSWORD);
-
-        onActionEvents();
-
     }
 
     protected void onActionEvents() {
