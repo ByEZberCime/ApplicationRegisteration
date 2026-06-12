@@ -2,6 +2,8 @@ package com.applicationregisteration.fx.byezbercime;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -44,6 +46,7 @@ public class MainPageActivity extends AppCompatActivity {
     private TextView errorUsernameUppercaseInvalidMessage;
     private TextView errorPhonenumberInvalidMessage;
     private TextView errorCountryIsNotSupportedMessage;
+    private Animation errorCardAnimation;
 
 
     @Override
@@ -51,6 +54,8 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.main_page);
+
+        this.errorCardAnimation = AnimationUtils.loadAnimation(this,R.anim.error_cards_animation);
 
         this.successContainer = (CardView) findViewById(R.id.register_success_container);
         this.errorContainer = (CardView) findViewById(R.id.register_error_container);
@@ -92,7 +97,7 @@ public class MainPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                /*if (!tickManager.getSyncCooldownManager().getBackgroundSyncCooldowns().isEmpty()) {
+                if (!tickManager.getSyncCooldownManager().getBackgroundSyncCooldowns().isEmpty()) {
                     tickManager.getSyncCooldownManager().getBackgroundSyncCooldowns().clear();
 
                     getErrorBirthdayMessage().setVisibility(View.GONE);
@@ -109,7 +114,7 @@ public class MainPageActivity extends AppCompatActivity {
                     getSuccessContainer().setVisibility(View.GONE);
                     getErrorContainer().setVisibility(View.GONE);
 
-                }*/
+                }
 
                 String emailTextString = emailText.getText().toString();
                 String realNameString = realName.getText().toString();
@@ -120,19 +125,12 @@ public class MainPageActivity extends AppCompatActivity {
                 String passwordString = password.getText().toString();
                 String confirmPasswordString = confirmPassword.getText().toString();
 
-                System.out.println(1);
-
                 if (isRegisterUserAboutsEmpty(emailTextString,realNameString,sourNameString,usernameString,phoneNumberString,birthdayString,passwordString,confirmPasswordString)) {
-                    System.out.println(2);
                     if (authenticationManager.isEmailAuthentication(emailTextString)) {
-                        System.out.println(3);
                         if (authenticationManager.isTextLength(realNameString,30) && authenticationManager.isIllegalCharacter(realNameString) &&
                                 authenticationManager.isIllegalCharacter(sourNameString) && authenticationManager.isTextLength(sourNameString,30)) {
-                            System.out.println(4);
                             if (authenticationManager.isIllegalCharacter(usernameString) && authenticationManager.isTextLength(usernameString,30)) {
-                                System.out.println(5);
                                 if(!authenticationManager.isCharacterAuthenticate(AuthenticationManager.AuthenticationPasswordInformation.UPPERCASE,1,usernameString)) {
-                                    System.out.println("6");
                                     if (!phoneNumberString.isEmpty() && authenticationManager.isTextMinLength(phoneNumberString,12)) {
 
                                         int p = phoneNumberString.length() - 3;
@@ -140,13 +138,10 @@ public class MainPageActivity extends AppCompatActivity {
                                         String countryPhoneCode = CountryPhoneCode.getByPhoneCode(numString).name();
 
                                         if (countryPhoneCode.equals(CountryPhoneCode.TURKEY.name())) {
-                                            System.out.println(7);
 
                                             String phone = authenticationManager.getCountryPhoneNumberFormat(countryPhoneCode,phoneNumberString);
                                             if (!phone.isEmpty()) {
-                                                System.out.println(8);
                                                 if (authenticationManager.isBirthdayDateAuthentication(birthdayString) && authenticationManager.isOldLimit(birthdayString,18)) {
-                                                    System.out.println(9);
 
                                                     boolean passwordResult =
                                                             authenticationManager.isTextMinLength(passwordString,6) &&
@@ -166,61 +161,59 @@ public class MainPageActivity extends AppCompatActivity {
                                                                     authenticationManager.isCharacterAuthenticate(AuthenticationManager.AuthenticationPasswordInformation.KEYCASE,1,confirmPasswordString);
 
                                                     if (passwordResult ) {
-                                                        System.out.println(10);
                                                         if (confirmPasswordResult) {
-                                                            System.out.println(11);
-                                                            if (authenticationManager.isAuthenticationPasswordConfirm(passwordString,confirmPasswordString)) {
-                                                                System.out.println(12);
+                                                            if (authenticationManager.isAuthenticationPasswordConfirm(passwordString,confirmPasswordString) && passwordString.equals(confirmPasswordString)) {
 
                                                                 tickManager.getSyncCooldownManager().setSuccessRegisteredMessage(successContainer,successRegisteredMessage,true,20L);
+                                                                successContainer.startAnimation(errorCardAnimation);
 
                                                             } else {
-                                                                System.out.println("c12");
                                                                 tickManager.getSyncCooldownManager().setErrorTypePasswordWrong(errorContainer,errorPasswordMessage,true,5L);
+                                                                errorContainer.setAnimation(errorCardAnimation);
                                                             }
                                                         } else {
-                                                            System.out.println("c11");
                                                             tickManager.getSyncCooldownManager().setErrorTypePasswordCharacterWrong(errorContainer,errorPasswordCharacterNotEnoughMessage,true,5L);
+                                                            errorContainer.setAnimation(errorCardAnimation);
                                                         }
                                                     } else {
-                                                        System.out.println("c10");
                                                         tickManager.getSyncCooldownManager().setErrorTypePasswordCharacterWrong(errorContainer,errorPasswordCharacterNotEnoughMessage,true,5L);
+                                                        errorContainer.setAnimation(errorCardAnimation);
                                                     }
                                                 } else {
-                                                    System.out.println("c9");
                                                     tickManager.getSyncCooldownManager().setErrorTypeBirthday(errorContainer,errorBirthdayMessage,true,5L);
+                                                    errorContainer.setAnimation(errorCardAnimation);
                                                 }
                                             } else {
-                                                System.out.println("c8");
                                                 tickManager.getSyncCooldownManager().setErrorTypePhoneNumberInvalid(errorContainer,errorPhonenumberInvalidMessage,true,5L);
+                                                errorContainer.setAnimation(errorCardAnimation);
                                             }
                                         } else {
-                                            System.out.println("c7");
                                             tickManager.getSyncCooldownManager().setErrorTypeCountryNotSupport(errorContainer,errorCountryIsNotSupportedMessage,true,5L);
+                                            errorContainer.setAnimation(errorCardAnimation);
                                         }
                                     } else {
-                                        System.out.println("c6");
                                         tickManager.getSyncCooldownManager().setErrorTypePhoneNumberInvalid(errorContainer,errorPhonenumberInvalidMessage,true,5L);
+                                        errorContainer.setAnimation(errorCardAnimation);
                                     }
                                 } else {
-                                    System.out.println("c5");
                                     tickManager.getSyncCooldownManager().setErrorTypeUsernameUppercaseWrong(errorContainer,errorUsernameUppercaseInvalidMessage,true,5L);
+                                    errorContainer.setAnimation(errorCardAnimation);
                                 }
                             } else {
-                                System.out.println("c4");
                                 tickManager.getSyncCooldownManager().setErrorTypeUsernameWrong(errorContainer,errorUsernameWrongMessage,true,5L);
+                                errorContainer.setAnimation(errorCardAnimation);
                             }
                         } else {
-                            System.out.println("c3");
                             tickManager.getSyncCooldownManager().setErrorTypeNameWrong(errorContainer,errorNameWrongMessage,true,5L);
+                            errorContainer.setAnimation(errorCardAnimation);
                         }
                     } else {
-                        System.out.println("c2");
                         tickManager.getSyncCooldownManager().setErrorTypeEmailWrong(errorContainer,errorMailMessage,true,5L);
+                        errorContainer.setAnimation(errorCardAnimation);
                     }
                 } else {
-                    System.out.println("c1");
                     tickManager.getSyncCooldownManager().setErrorTypeInfoEmpty(errorContainer,errorRegisterEmptyMessage,true,5L);
+                    errorContainer.setAnimation(errorCardAnimation);
                 }
 
             }
