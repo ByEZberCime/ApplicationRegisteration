@@ -89,6 +89,12 @@ public class AuthenticationManager {
         return result;
     }
 
+    public boolean isDeviceMacAdressAuthentication() {
+        boolean result = false;
+
+        return result;
+    }
+
     public boolean isOldLimit(String birthdayDateText,int oldLimit) {
         boolean result = false;
 

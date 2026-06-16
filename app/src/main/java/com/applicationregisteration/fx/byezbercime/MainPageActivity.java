@@ -1,5 +1,6 @@
 package com.applicationregisteration.fx.byezbercime;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -8,12 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresPermission;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.applicationregisteration.fx.byezbercime.managers.AuthenticationManager;
+import com.applicationregisteration.fx.byezbercime.managers.DeviceManager;
 import com.applicationregisteration.fx.byezbercime.schedules.ApplicationBackgroundTick;
 import com.applicationregisteration.fx.byezbercime.util.CountryPhoneCode;
+import com.google.android.gms.location.LocationServices;
 
 public class MainPageActivity extends AppCompatActivity {
 
@@ -26,6 +30,7 @@ public class MainPageActivity extends AppCompatActivity {
     private static final String DEBUG_PASSWORD = " aD7sbc58CbBN5am4M1BK9.";
     private static final String DEBUG_CONFIRMPASSWORD = " aD7sbc58CbBN5am4M1BK9.";
 
+    private DeviceManager deviceManager;
 
     private ApplicationBackgroundTick tickManager;
     private AuthenticationManager authenticationManager;
@@ -58,12 +63,27 @@ public class MainPageActivity extends AppCompatActivity {
     private TextView errorCountryIsNotSupportedMessage;
     private Animation errorCardAnimation;
 
+    @RequiresPermission("android.permission.READ_PRIVILEGED_PHONE_STATE")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.main_page);
 
+        onPaletteComparator();
+
+        this.deviceManager = new DeviceManager(this, LocationServices.getFusedLocationProviderClient(this));
+        this.authenticationManager = new AuthenticationManager();
+        this.tickManager = new ApplicationBackgroundTick(this);
+
+        tickManager.runSyncSchedulers(1000L);
+
+        debugTest();
+        onActionEvents();
+
+    }
+
+    private void onPaletteComparator() {
         this.errorCardAnimation = AnimationUtils.loadAnimation(this,R.anim.error_cards_animation);
 
         this.successContainer = (CardView) findViewById(R.id.register_success_container);
@@ -91,17 +111,9 @@ public class MainPageActivity extends AppCompatActivity {
         this.birthday = (EditText) findViewById(R.id.birthday);
         this.password = (EditText) findViewById(R.id.password);
         this.confirmPassword = (EditText) findViewById(R.id.confirm_password);
-
-        this.authenticationManager = new AuthenticationManager();
-        this.tickManager = new ApplicationBackgroundTick(this);
-        tickManager.runSyncSchedulers(1000L);
-
-//        debugTest();
-
-        onActionEvents();
-
     }
 
+    @RequiresPermission("android.permission.READ_PRIVILEGED_PHONE_STATE")
     private void debugTest() {
         emailText.setText(DEBUG_EMAIL);
         realName.setText(DEBUG_REALNAME);
@@ -111,6 +123,29 @@ public class MainPageActivity extends AppCompatActivity {
         birthday.setText(DEBUG_BIRTHDAY);
         password.setText(DEBUG_PASSWORD);
         confirmPassword.setText(DEBUG_CONFIRMPASSWORD);
+/*
+
+        System.out.println(deviceManager.getDeviceMacAdress() + " MAC");
+        System.out.println(deviceManager.getDeviceInet6Adress() + " Inet6Adress");
+        System.out.println(deviceManager.getDeviceInet4Adress() + " Inet4Adress");
+        System.out.println(Build.MODEL + " Model ");
+*/
+
+/*
+        System.out.println(Build.ID + " ID");
+        System.out.println(Build.BOOTLOADER + " BOOTLOADER");
+        System.out.println(Build.DEVICE + " DEVICE");
+        System.out.println(Build.FINGERPRINT + " FGP");
+        System.out.println(Build.getRadioVersion() + " RV");
+        System.out.println(Build.HARDWARE + " HARDWARE");
+        System.out.println(Build.MODEL + " MODEL");
+        System.out.println(Build.PRODUCT + " PRODUCT");
+        System.out.println(Build.TYPE + " TYPE");
+        System.out.println(Build.HOST + " HOST");
+        System.out.println(Build.USER + " USER");
+        System.out.println(Build.DISPLAY + " DISPLAY");
+        System.out.println(Build.Partition.PARTITION_NAME_SYSTEM + " PNS");*/
+
     }
 
     protected void onActionEvents() {
