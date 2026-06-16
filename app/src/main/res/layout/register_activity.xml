@@ -5,7 +5,7 @@
     android:id="@+id/register_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainPageActivity">
+    tools:context=".RegisterActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/register_success_container"

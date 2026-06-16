@@ -16,12 +16,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ApplicationRegisteration">
-
         <activity
             android:name=".MainPageActivity"
-            android:exported="true"
-            android:allowTaskReparenting="true"/>
-
+            android:allowTaskReparenting="true"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
