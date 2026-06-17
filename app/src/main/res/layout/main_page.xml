@@ -2,447 +2,99 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/register_content"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:alpha="1"
+    android:background="#282828"
+    android:theme="@style/Theme.ApplicationRegisteration"
+    android:tooltipText="@string/action_sign_in"
+    app:circularflow_defaultRadius="50dp"
+    app:circularflow_viewCenter="@string/action_sign_in"
     tools:context=".MainPageActivity">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/register_success_container"
-        android:layout_width="241dp"
-        android:layout_height="69dp"
-        android:layout_marginStart="85dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginBottom="8dp"
-        android:visibility="invisible"
-        app:cardBackgroundColor="#DD40FC7A"
-        app:cardCornerRadius="50dp"
-        app:cardElevation="4dp"
-        app:cardPreventCornerOverlap="false"
-        app:layout_constraintBottom_toTopOf="@+id/register_container_cards"
-        app:layout_constraintEnd_toEndOf="@+id/register_container_cards"
-        app:layout_constraintStart_toStartOf="@+id/register_container_cards">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/register_success_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/success_register_text"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="5dp"
-                android:background="#5FF4A9"
-                android:text="Success you are registered"
-                android:textAlignment="center"
-                android:textColor="#323232"
-                android:textSize="25dp"
-                android:textStyle="bold|italic"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/register_error_container"
-        android:layout_width="300dp"
-        android:layout_height="82dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginBottom="8dp"
-        android:visibility="invisible"
-        app:cardBackgroundColor="#DDFF4168"
-        app:cardCornerRadius="50dp"
-        app:cardElevation="4dp"
-        app:cardPreventCornerOverlap="false"
-        app:layout_constraintBottom_toTopOf="@+id/register_container_cards"
-        app:layout_constraintEnd_toEndOf="@+id/register_container_cards"
-        app:layout_constraintStart_toStartOf="@+id/register_container_cards">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/register_error_layout"
-            android:layout_width="match_parent"
-            android:layout_height="112dp">
-
-            <TextView
-                android:id="@+id/error_of_email"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="5dp"
-                android:background="#FF6767"
-                android:paddingTop="20dp"
-                android:text="The email is not right"
-                android:textAlignment="center"
-                android:textColor="#323232"
-                android:textSize="26dp"
-                android:textStyle="bold|italic"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/error_of_passwords"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="4dp"
-                android:background="#FF6767"
-                android:paddingTop="20dp"
-                android:text="The passwords are not right"
-                android:textAlignment="center"
-                android:textColor="#323232"
-                android:textSize="23dp"
-                android:textStyle="bold|italic"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/error_of_birthday_year"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="4dp"
-                android:background="#FF6767"
-                android:paddingTop="10dp"
-                android:text="The birthday years old are very small"
-                android:textAlignment="center"
-                android:textColor="#323232"
-                android:textSize="20dp"
-                android:textStyle="bold|italic"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/error_of_register_info_empty"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="4dp"
-                android:background="#FF6767"
-                android:paddingTop="10dp"
-                android:text="The full write all about than you can next"
-                android:textAlignment="center"
-                android:textColor="#323232"
-                android:textSize="20dp"
-                android:textStyle="bold|italic"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/error_of_name"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="4dp"
-                android:background="#FF6767"
-                android:paddingTop="10dp"
-                android:text="The real name or sour name are wrong"
-                android:textAlignment="center"
-                android:textColor="#323232"
-                android:textSize="20dp"
-                android:textStyle="bold|italic"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/error_of_username"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="4dp"
-                android:background="#FF6767"
-                android:paddingTop="20dp"
-                android:text="The username are wrong"
-                android:textAlignment="center"
-                android:textColor="#323232"
-                android:textSize="20dp"
-                android:textStyle="bold|italic"
-                android:visibility="gone"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/error_of_username_uppercase"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="4dp"
-                android:background="#FF6767"
-                android:paddingTop="10dp"
-                android:text="The username is not support uppercase"
-                android:textAlignment="center"
-                android:textColor="#323232"
-                android:textSize="20dp"
-                android:textStyle="bold|italic"
-                android:visibility="gone"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/error_of_phone_invalid"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="4dp"
-                android:background="#FF6767"
-                android:paddingTop="20dp"
-                android:text="The phone number is invalid"
-                android:textAlignment="center"
-                android:textColor="#323232"
-                android:textSize="20dp"
-                android:textStyle="bold|italic"
-                android:visibility="gone"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/error_of_country_not_support"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="4dp"
-                android:background="#FF6767"
-                android:paddingTop="20dp"
-                android:text="The phone number is invalid"
-                android:textAlignment="center"
-                android:textColor="#323232"
-                android:textSize="20dp"
-                android:textStyle="bold|italic"
-                android:visibility="gone"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/error_of_passwrod_character_not_enough"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="4dp"
-                android:background="#FF6767"
-                android:text="@string/password_character_wrong"
-                android:textAlignment="center"
-                android:textColor="#323232"
-                android:textSize="16dp"
-                android:textStyle="bold|italic"
-
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/register_container_cards"
-        android:layout_width="match_parent"
-        android:layout_height="580dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="3dp"
-        android:backgroundTint="#B1B1B1"
-        android:visibility="visible"
-        app:cardCornerRadius="30dp"
-        app:cardElevation="10dp"
-        app:cardPreventCornerOverlap="false"
-        app:contentPaddingLeft="2dp"
-        app:contentPaddingRight="2dp"
-        app:contentPaddingTop="2dp"
+        android:id="@+id/main_card_content"
+        android:layout_width="355dp"
+        android:layout_height="525dp"
+        android:backgroundTint="#000000"
+        app:cardCornerRadius="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.775">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/register_container_layout"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_card_layout"
             android:layout_width="match_parent"
-            android:layout_height="580dp"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="#ECEAEA"
-            app:cardCornerRadius="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.466"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_height="525dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/main_button_login"
+                android:layout_width="257dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="200dp"
+                android:backgroundTint="#333333"
+                app:cardCornerRadius="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <RadioGroup
-                    android:id="@+id/register_group_platte"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/main_button_login_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="519dp"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginEnd="35dp"
-                    android:background="#EBEAEA"
-                    android:backgroundTint="#AAFFFCFC"
-                    android:backgroundTintMode="src_in"
-                    app:layout_constraintBottom_toTopOf="@+id/register_button"
-                    app:layout_constraintEnd_toEndOf="@+id/register_button"
-                    app:layout_constraintStart_toStartOf="@+id/register_button"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_height="match_parent">
 
-                    <EditText
-                        android:id="@+id/email"
+                    <Button
+                        android:id="@+id/login_button"
                         android:layout_width="match_parent"
-                        android:layout_height="66dp"
-                        android:ems="55"
-                        android:hint="example@gmail.com"
-                        android:inputType="text|textEmailAddress"
-                        android:paddingRight="16px"
-                        android:textAlignment="viewStart"
-                        android:textStyle="normal" />
+                        android:layout_height="70dp"
+                        android:backgroundTint="#2E2E2E"
+                        android:text="Sign In"
+                        android:textSize="30dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <EditText
-                        android:id="@+id/firstname"
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/main_button_register"
+                android:layout_width="257dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="9dp"
+                android:backgroundTint="#333333"
+                app:cardCornerRadius="50dp"
+                app:layout_constraintEnd_toEndOf="@+id/main_button_login"
+                app:layout_constraintStart_toStartOf="@+id/main_button_login"
+                app:layout_constraintTop_toBottomOf="@+id/main_button_login">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/main_button_register_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/register_button"
                         android:layout_width="match_parent"
-                        android:layout_height="67dp"
-                        android:ems="10"
-                        android:hint="real name"
-                        android:inputType="text"
-                        android:paddingRight="16px"
-                        android:textAlignment="viewStart"
-                        android:textColorHint="@color/material_dynamic_neutral20" />
+                        android:layout_height="70dp"
+                        android:backgroundTint="#2E2E2E"
+                        android:text="Sign up"
+                        android:textSize="30dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <EditText
-                        android:id="@+id/surname"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:ems="10"
-                        android:hint="sourname"
-                        android:inputType="text"
-                        android:paddingRight="16px"
-                        android:textAlignment="viewStart"
-                        android:textColorHint="@color/material_dynamic_neutral20" />
+            </androidx.cardview.widget.CardView>
 
-                    <EditText
-                        android:id="@+id/username"
-                        android:layout_width="match_parent"
-                        android:layout_height="63dp"
-                        android:ems="10"
-                        android:hint="username"
-                        android:inputType="text"
-                        android:paddingRight="16px"
-                        android:textAlignment="viewStart"
-                        android:textColorHint="@color/material_dynamic_neutral20" />
-
-                    <EditText
-                        android:id="@+id/phonenumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="63dp"
-                        android:ems="10"
-                        android:hint="(+_ _ )(  _ _ _  )( _ _ _ )( _ _ _ _ )"
-                        android:inputType="phone"
-                        android:paddingRight="16px"
-                        android:textAlignment="viewStart"
-                        android:textColorHint="@color/material_dynamic_neutral20" />
-
-                    <EditText
-                        android:id="@+id/birthday"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:ems="10"
-                        android:hint="01/01/2007"
-                        android:inputType="text"
-                        android:paddingRight="16px"
-                        android:textAlignment="viewStart"
-                        android:textColorHint="@color/material_dynamic_neutral20" />
-
-                    <EditText
-                        android:id="@+id/password"
-                        android:layout_width="match_parent"
-                        android:layout_height="71dp"
-                        android:ems="10"
-                        android:hint="password"
-                        android:inputType="textPassword"
-                        android:paddingRight="16px"
-                        android:textAlignment="viewStart" />
-
-                    <EditText
-                        android:id="@+id/confirm_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="68dp"
-                        android:ems="10"
-                        android:hint="password confirm"
-                        android:inputType="textPassword"
-                        android:paddingRight="16px"
-                        android:textAlignment="viewStart" />
-
-                </RadioGroup>
-
-                <Button
-                    android:id="@+id/register_button"
-                    android:layout_width="221dp"
-                    android:layout_height="49dp"
-                    android:layout_marginBottom="4dp"
-                    android:backgroundTint="#A9AEA9"
-                    android:text="Register"
-                    android:textSize="23dp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

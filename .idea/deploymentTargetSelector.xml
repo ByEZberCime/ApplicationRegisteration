@@ -2,7 +2,7 @@
 <project version="4">
   <component name="deploymentTargetSelector">
     <selectionStates>
-      <SelectionState runConfigName="MainPageActivity">
+      <SelectionState runConfigName="LoadingActivity">
         <option name="selectionMode" value="DROPDOWN" />
         <DropdownSelection timestamp="2026-06-09T15:17:05.537841595Z">
           <Target type="DEFAULT_BOOT">

@@ -33,8 +33,6 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String DEBUG_PASSWORD = " aD7sbc58CbBN5am4M1BK9.";
     private static final String DEBUG_CONFIRMPASSWORD = " aD7sbc58CbBN5am4M1BK9.";
 
-    private DeviceManager deviceManager;
-
     private ApplicationBackgroundTick tickManager;
     private AuthenticationManager authenticationManager;
 
@@ -72,16 +70,17 @@ public class RegisterActivity extends AppCompatActivity {
 
         setContentView(R.layout.register_activity);
 
+        BackgroundApplicationStorage.backgroundAsynqSchedulesRunnableIndex = 1;
+
         onPaletteComparator();
 
-        this.deviceManager = new DeviceManager(this, LocationServices.getFusedLocationProviderClient(this));
         this.authenticationManager = new AuthenticationManager();
         this.tickManager = new ApplicationBackgroundTick(this);
 
         tickManager.runSyncSchedulers(1000L);
 
-        debugTest();
-        onActionEvents();
+//        debugTest();
+//        onActionEvents();
 
     }
 
@@ -105,17 +104,16 @@ public class RegisterActivity extends AppCompatActivity {
         this.errorPasswordCharacterNotEnoughMessage = (TextView) findViewById(R.id.error_of_passwrod_character_not_enough);
 
         this.registerButton = (Button) findViewById(R.id.register_button);
-        this.emailText = (EditText) findViewById(R.id.email);
+/*        this.emailText = (EditText) findViewById(R.id.email);
         this.realName = (EditText) findViewById(R.id.firstname);
         this.sourName = (EditText) findViewById(R.id.surname);
         this.username = (EditText) findViewById(R.id.username);
         this.phoneNumber = (EditText) findViewById(R.id.phonenumber);
         this.birthday = (EditText) findViewById(R.id.birthday);
         this.password = (EditText) findViewById(R.id.password);
-        this.confirmPassword = (EditText) findViewById(R.id.confirm_password);
+        this.confirmPassword = (EditText) findViewById(R.id.confirm_password);*/
     }
 
-    @RequiresPermission("android.permission.READ_PRIVILEGED_PHONE_STATE")
     private void debugTest() {
         emailText.setText(DEBUG_EMAIL);
         realName.setText(DEBUG_REALNAME);
@@ -125,28 +123,6 @@ public class RegisterActivity extends AppCompatActivity {
         birthday.setText(DEBUG_BIRTHDAY);
         password.setText(DEBUG_PASSWORD);
         confirmPassword.setText(DEBUG_CONFIRMPASSWORD);
-/*
-
-        System.out.println(deviceManager.getDeviceMacAdress() + " MAC");
-        System.out.println(deviceManager.getDeviceInet6Adress() + " Inet6Adress");
-        System.out.println(deviceManager.getDeviceInet4Adress() + " Inet4Adress");
-        System.out.println(Build.MODEL + " Model ");
-*/
-
-/*
-        System.out.println(Build.ID + " ID");
-        System.out.println(Build.BOOTLOADER + " BOOTLOADER");
-        System.out.println(Build.DEVICE + " DEVICE");
-        System.out.println(Build.FINGERPRINT + " FGP");
-        System.out.println(Build.getRadioVersion() + " RV");
-        System.out.println(Build.HARDWARE + " HARDWARE");
-        System.out.println(Build.MODEL + " MODEL");
-        System.out.println(Build.PRODUCT + " PRODUCT");
-        System.out.println(Build.TYPE + " TYPE");
-        System.out.println(Build.HOST + " HOST");
-        System.out.println(Build.USER + " USER");
-        System.out.println(Build.DISPLAY + " DISPLAY");
-        System.out.println(Build.Partition.PARTITION_NAME_SYSTEM + " PNS");*/
 
     }
 
@@ -225,6 +201,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                                                                 tickManager.getSyncCooldownManager().setSuccessRegisteredMessage(successContainer,successRegisteredMessage,true,20L);
                                                                 successContainer.startAnimation(errorCardAnimation);
+
+                                                                tickManager.getSyncCooldownManager().setNextIntant(4L);
 
                                                             } else {
                                                                 tickManager.getSyncCooldownManager().setErrorTypePasswordWrong(errorContainer,errorPasswordMessage,true,5L);

@@ -3,6 +3,7 @@ package com.applicationregisteration.fx.byezbercime.managers;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import java.util.HashMap;
@@ -15,9 +16,16 @@ public class BackgroundSyncCooldownManager {
             errorMessage.setVisibility(CardView.VISIBLE);
             errorContainer.setVisibility(View.VISIBLE);
 
-            getBackgroundSyncCooldowns().put("error_of_username",remainingSeconds);
+            getBackgroundSyncCooldowns().put("register_error_of_username",remainingSeconds);
 
         }
+    }
+
+    public void setNextIntant(Long value) {
+
+        long remainingSeconds = ((value * 1000) + System.currentTimeMillis());
+        getBackgroundSyncCooldowns().put("register_and_next_intant",remainingSeconds);
+
     }
 
     public void setSuccessRegisteredMessage(CardView errorContainer, TextView errorMessage, boolean result, Long value) {
@@ -27,7 +35,7 @@ public class BackgroundSyncCooldownManager {
             errorMessage.setVisibility(CardView.VISIBLE);
             errorContainer.setVisibility(View.VISIBLE);
 
-            getBackgroundSyncCooldowns().put("success_registered_content",remainingSeconds);
+            getBackgroundSyncCooldowns().put("register_success_registered_content",remainingSeconds);
 
         }
     }
@@ -46,7 +54,7 @@ public class BackgroundSyncCooldownManager {
             errorMessage.setVisibility(CardView.VISIBLE);
             errorContainer.setVisibility(View.VISIBLE);
 
-            getBackgroundSyncCooldowns().put("error_is_phonenumber_invalid",remainingSeconds);
+            getBackgroundSyncCooldowns().put("register_error_is_phonenumber_invalid",remainingSeconds);
 
         }
     }
@@ -58,7 +66,7 @@ public class BackgroundSyncCooldownManager {
             errorMessage.setVisibility(CardView.VISIBLE);
             errorContainer.setVisibility(View.VISIBLE);
 
-            getBackgroundSyncCooldowns().put("error_is_country_not_support",remainingSeconds);
+            getBackgroundSyncCooldowns().put("register_error_is_country_not_support",remainingSeconds);
 
         }
     }
@@ -70,7 +78,7 @@ public class BackgroundSyncCooldownManager {
             errorMessage.setVisibility(CardView.VISIBLE);
             errorContainer.setVisibility(View.VISIBLE);
 
-            getBackgroundSyncCooldowns().put("error_is_empty",remainingSeconds);
+            getBackgroundSyncCooldowns().put("register_error_is_empty",remainingSeconds);
 
         }
     }
@@ -82,7 +90,7 @@ public class BackgroundSyncCooldownManager {
             errorMessage.setVisibility(CardView.VISIBLE);
             errorContainer.setVisibility(View.VISIBLE);
 
-            getBackgroundSyncCooldowns().put("error_of_username_uppercase",remainingSeconds);
+            getBackgroundSyncCooldowns().put("register_error_of_username_uppercase",remainingSeconds);
 
         }
     }
@@ -94,7 +102,7 @@ public class BackgroundSyncCooldownManager {
             errorMessage.setVisibility(CardView.VISIBLE);
             errorContainer.setVisibility(View.VISIBLE);
 
-            getBackgroundSyncCooldowns().put("error_is_password_wrong",remainingSeconds);
+            getBackgroundSyncCooldowns().put("register_error_is_password_wrong",remainingSeconds);
 
         }
     }
@@ -106,7 +114,7 @@ public class BackgroundSyncCooldownManager {
             errorMessage.setVisibility(CardView.VISIBLE);
             errorContainer.setVisibility(View.VISIBLE);
 
-            getBackgroundSyncCooldowns().put("error_is_password_character_not_enough_wrong",remainingSeconds);
+            getBackgroundSyncCooldowns().put("register_error_is_password_character_not_enough_wrong",remainingSeconds);
 
         }
     }
@@ -118,7 +126,7 @@ public class BackgroundSyncCooldownManager {
             errorMessage.setVisibility(CardView.VISIBLE);
             errorContainer.setVisibility(View.VISIBLE);
 
-            getBackgroundSyncCooldowns().put("error_is_email",remainingSeconds);
+            getBackgroundSyncCooldowns().put("register_error_is_email",remainingSeconds);
 
         }
     }
@@ -130,7 +138,7 @@ public class BackgroundSyncCooldownManager {
             errorMessage.setVisibility(CardView.VISIBLE);
             errorContainer.setVisibility(View.VISIBLE);
 
-            getBackgroundSyncCooldowns().put("error_of_name",remainingSeconds);
+            getBackgroundSyncCooldowns().put("register_error_of_name",remainingSeconds);
 
         }
     }
@@ -143,7 +151,7 @@ public class BackgroundSyncCooldownManager {
             errorMessage.setVisibility(CardView.VISIBLE);
             errorContainer.setVisibility(View.VISIBLE);
 
-            getBackgroundSyncCooldowns().put("error_is_birthday",remainingSeconds);
+            getBackgroundSyncCooldowns().put("register_error_is_birthday",remainingSeconds);
 
         }
     }

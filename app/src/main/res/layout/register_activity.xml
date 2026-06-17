@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/register_content"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1E1E1E"
     tools:context=".RegisterActivity">
 
     <androidx.cardview.widget.CardView
@@ -15,7 +16,7 @@
         android:layout_marginEnd="85dp"
         android:layout_marginBottom="8dp"
         android:visibility="invisible"
-        app:cardBackgroundColor="#DD40FC7A"
+        app:cardBackgroundColor="#DD22BC50"
         app:cardCornerRadius="50dp"
         app:cardElevation="4dp"
         app:cardPreventCornerOverlap="false"
@@ -36,7 +37,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
-                android:background="#5FF4A9"
+
                 android:text="Success you are registered"
                 android:textAlignment="center"
                 android:textColor="#323232"
@@ -58,7 +59,7 @@
         android:layout_marginEnd="85dp"
         android:layout_marginBottom="8dp"
         android:visibility="invisible"
-        app:cardBackgroundColor="#DDFF4168"
+        app:cardBackgroundColor="#8CDA1C1D"
         app:cardCornerRadius="50dp"
         app:cardElevation="4dp"
         app:cardPreventCornerOverlap="false"
@@ -79,7 +80,6 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
-                android:background="#FF6767"
                 android:paddingTop="20dp"
                 android:text="The email is not right"
                 android:textAlignment="center"
@@ -100,7 +100,6 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="4dp"
-                android:background="#FF6767"
                 android:paddingTop="20dp"
                 android:text="The passwords are not right"
                 android:textAlignment="center"
@@ -123,7 +122,6 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="4dp"
-                android:background="#FF6767"
                 android:paddingTop="10dp"
                 android:text="The birthday years old are very small"
                 android:textAlignment="center"
@@ -144,7 +142,6 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="4dp"
-                android:background="#FF6767"
                 android:paddingTop="10dp"
                 android:text="The full write all about than you can next"
                 android:textAlignment="center"
@@ -165,7 +162,6 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="4dp"
-                android:background="#FF6767"
                 android:paddingTop="10dp"
                 android:text="The real name or sour name are wrong"
                 android:textAlignment="center"
@@ -208,7 +204,6 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="4dp"
-                android:background="#FF6767"
                 android:paddingTop="10dp"
                 android:text="The username is not support uppercase"
                 android:textAlignment="center"
@@ -230,7 +225,6 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="4dp"
-                android:background="#FF6767"
                 android:paddingTop="20dp"
                 android:text="The phone number is invalid"
                 android:textAlignment="center"
@@ -252,7 +246,6 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="4dp"
-                android:background="#FF6767"
                 android:paddingTop="20dp"
                 android:text="The phone number is invalid"
                 android:textAlignment="center"
@@ -274,7 +267,6 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="4dp"
-                android:background="#FF6767"
                 android:text="@string/password_character_wrong"
                 android:textAlignment="center"
                 android:textColor="#323232"
@@ -294,10 +286,11 @@
         android:id="@+id/register_container_cards"
         android:layout_width="match_parent"
         android:layout_height="580dp"
+
         android:layout_marginStart="3dp"
         android:layout_marginEnd="3dp"
-        android:layout_marginBottom="3dp"
-        android:backgroundTint="#B1B1B1"
+        android:layout_marginBottom="6dp"
+        android:backgroundTint="#494949"
         android:visibility="visible"
         app:cardCornerRadius="30dp"
         app:cardElevation="10dp"
@@ -315,7 +308,8 @@
             android:layout_width="match_parent"
             android:layout_height="580dp"
             android:layout_marginBottom="5dp"
-            android:backgroundTint="#ECEAEA"
+            android:background="#494949"
+            android:backgroundTint="#494949"
             app:cardCornerRadius="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -323,17 +317,18 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/register_main_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <RadioGroup
+                <!--<RadioGroup
                     android:id="@+id/register_group_platte"
                     android:layout_width="match_parent"
                     android:layout_height="519dp"
                     android:layout_marginStart="35dp"
                     android:layout_marginEnd="35dp"
                     android:background="#EBEAEA"
-                    android:backgroundTint="#AAFFFCFC"
+                    android:backgroundTint="#AA5E5E5E"
                     android:backgroundTintMode="src_in"
                     app:layout_constraintBottom_toTopOf="@+id/register_button"
                     app:layout_constraintEnd_toEndOf="@+id/register_button"
@@ -427,19 +422,208 @@
                         android:textAlignment="viewStart" />
 
                 </RadioGroup>
+-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/email_card_content"
+                    android:layout_width="344dp"
+                    android:layout_height="41dp"
+                    android:layout_marginBottom="8dp"
 
-                <Button
+                    android:backgroundTint="#4E4E4E"
+                    app:cardCornerRadius="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/realname_card_content"
+                    app:layout_constraintEnd_toEndOf="@+id/realname_card_content"
+                    app:layout_constraintStart_toStartOf="@+id/realname_card_content">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/email_card_content_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#4E4E4E"
+                        android:visibility="visible"
+                        tools:visibility="visible"></androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/realname_card_content"
+                    android:layout_width="344dp"
+                    android:layout_height="41dp"
+                    android:layout_marginBottom="8dp"
+
+                    android:backgroundTint="#4E4E4E"
+                    app:cardCornerRadius="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/sourname_card_content"
+                    app:layout_constraintEnd_toEndOf="@+id/sourname_card_content"
+                    app:layout_constraintStart_toStartOf="@+id/sourname_card_content">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/realname_card_content_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#4E4E4E"
+                        android:visibility="visible"
+                        tools:visibility="visible"></androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/sourname_card_content"
+                    android:layout_width="344dp"
+                    android:layout_height="41dp"
+                    android:layout_marginBottom="8dp"
+
+                    android:backgroundTint="#4E4E4E"
+                    app:cardCornerRadius="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/username_card_content"
+                    app:layout_constraintEnd_toEndOf="@+id/username_card_content"
+                    app:layout_constraintHorizontal_bias="0.504"
+                    app:layout_constraintStart_toStartOf="@+id/username_card_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/sourname_card_content_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#4E4E4E"
+                        android:visibility="visible"
+                        tools:visibility="visible"></androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/username_card_content"
+                    android:layout_width="344dp"
+                    android:layout_height="41dp"
+                    android:layout_marginBottom="8dp"
+
+                    android:backgroundTint="#4E4E4E"
+                    app:cardCornerRadius="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/phonenumber_card_content"
+                    app:layout_constraintEnd_toEndOf="@+id/phonenumber_card_content"
+                    app:layout_constraintHorizontal_bias="0.512"
+                    app:layout_constraintStart_toStartOf="@+id/phonenumber_card_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/phonenumber_card_content_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#4E4E4E"
+                        android:visibility="visible"
+                        tools:visibility="visible"></androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/phonenumber_card_content"
+                    android:layout_width="344dp"
+                    android:layout_height="41dp"
+                    android:layout_marginBottom="8dp"
+
+                    android:backgroundTint="#4E4E4E"
+                    app:cardCornerRadius="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/birthday_card_content"
+                    app:layout_constraintEnd_toEndOf="@+id/birthday_card_content"
+                    app:layout_constraintHorizontal_bias="0.512"
+                    app:layout_constraintStart_toStartOf="@+id/birthday_card_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/username_card_content_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#4E4E4E"
+                        android:visibility="visible"
+                        tools:visibility="visible"></androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/birthday_card_content"
+                    android:layout_width="344dp"
+                    android:layout_height="41dp"
+
+                    android:layout_marginBottom="8dp"
+                    android:backgroundTint="#4E4E4E"
+                    app:cardCornerRadius="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/password_card_content"
+                    app:layout_constraintEnd_toEndOf="@+id/password_card_content"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/password_card_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/birthday_card_content_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#4E4E4E"
+                        android:visibility="visible"
+                        tools:visibility="visible" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/password_card_content"
+                    android:layout_width="344dp"
+                    android:layout_height="41dp"
+
+                    android:layout_marginBottom="8dp"
+                    android:backgroundTint="#4E4E4E"
+                    app:cardCornerRadius="22dp"
+                    app:layout_constraintBottom_toTopOf="@+id/confirmpassword_card_content"
+                    app:layout_constraintEnd_toEndOf="@+id/confirmpassword_card_content"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/confirmpassword_card_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/password_card_content_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#4E4E4E"
+                        android:visibility="visible"
+                        tools:visibility="gone"></androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/confirmpassword_card_content"
+                    android:layout_width="344dp"
+                    android:layout_height="41dp"
+
+                    android:layout_marginBottom="64dp"
+                    android:backgroundTint="#4E4E4E"
+                    app:cardCornerRadius="22dp"
+                    app:layout_constraintBottom_toTopOf="@+id/register_button_card_container"
+                    app:layout_constraintEnd_toEndOf="@+id/register_button_card_container"
+                    app:layout_constraintStart_toStartOf="@+id/register_button_card_container">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/confirmpassword_card_content_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#4E4E4E"
+                        android:visibility="visible"
+                        tools:visibility="gone"></androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/register_button_card_container"
+                    android:layout_width="202dp"
+                    android:layout_height="43dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="50dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <!--<Button
                     android:id="@+id/register_button"
                     android:layout_width="221dp"
                     android:layout_height="49dp"
                     android:layout_marginBottom="4dp"
-                    android:backgroundTint="#A9AEA9"
+                    android:backgroundTint="#5E5E5E"
                     android:text="Register"
+                    android:textColor="#404040"
                     android:textSize="23dp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintHorizontal_bias="0.394"
+                    app:layout_constraintStart_toStartOf="parent" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
